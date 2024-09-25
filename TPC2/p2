@@ -1,0 +1,41 @@
+# modalidade 1 utilizador pensa num número entre 0 e 100 e computador tem de adivinhar
+N = 50
+adiv = 50
+tentativa = 0
+resposta = ""
+while resposta == "Maior" or resposta == "Menor" or resposta == "":
+    resposta = str(input("O número em que pensou é " + str(adiv) + "?"))
+    N = N / 2
+    if resposta == "Maior":
+        adiv = round(adiv + N, 0)
+    elif resposta == "Menor":
+        adiv = round(adiv - N, 0)
+    tentativa = tentativa + 1
+if resposta == "Acertou":
+    print("Fim do jogo")
+    print("O número de tentativas foi: " + str(tentativa))
+
+
+#modalidade 2 computador pensa num número e utilizador tem de acertar
+import random
+def gera():
+    return random.randint(1,100)
+
+def game():
+    resposta = gera()
+    tentativa = 0
+    
+    palpite=0
+    while palpite is not resposta:
+        tentativa +=1
+        palpite = int(input("Qual é o seu palpite: "))
+        if palpite > resposta:
+            print("Errou! É um valor menor que ", palpite)
+        elif palpite < resposta:
+            print("Errou! É um valor maior que ", palpite)
+        else:
+            print("O número gerado foi", resposta)
+            print("Acertou na tentativa", tentativa)
+    
+    return
+game()
