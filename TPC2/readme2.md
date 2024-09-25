@@ -1,0 +1,15 @@
+Na modalidade 1, onde o utilizador pensa num número entre 0 e 100 e o computador tem de adivinhar, comecei por criar três variáveis:
+-“N = 50” -> esta variável irá permitir aproximar o raciocínio ao número pensado pelo utilizador através da sua divisão e à sua soma ou subtração com a variável adiv. Ou seja, para um número de 0 a 100, a opção de escolha do computador será de metade, de forma a aumentar a probabilidade de encontrar o número. Após essa primeira jogada, o N que anteriormente era 50, será dividido em dois e assim o intervalo de possibilidades diminui ainda mais. A cada jogada N será dividido consecutivamente por dois e somado ou subtraído novamente a adiv até chegar ao número escolhido pelo utilizador. Todo este raciocínio tem como intuito diminuir o número de jogadas e chegar logo ao número certo. 
+- “adiv=50” -> Será o número a apresentar ao utilizador.
+-“resposta = “” “ -> esta variável irá guardar a resposta inserida pelo utilizador.
+- “tentativa = 0 “ -> É o número de tentativas até encontrar a resposta certa.
+Criei um ciclo while para enquanto a resposta for igual a “maior”, “menor” ou simplesmente “ “, o computador ir perguntando se o número que pensou está correto. Seguidamente a variável N é dividida por dois, de forma a restringir ainda mais as possibilidades de jogo. Utilizei uma condição if para o caso de a resposta dada pelo utilizador ser “maior”, onde ao adiv se irá somar o N. O comando round permite que o número seja arredondando facilitando o raciocínio sem problemas com casas decimais. Caso a resposta seja “menor”, ao adiv irá retirar-se N. No fim do ciclo à variável tentativa irá somar-se 1, para no final termos o número total de tentativas. 
+Fora do ciclo while, criei uma condição if, onde caso a resposta do utilizador fosse acertou, o computador iria imprimir “Fim do jogo” e também imprimir o número de tentativas.
+
+Na segunda modalidade, gerei duas funções. Na primeira função designada por gera(), retornei um número aleatório entre 0 e 100 através do comando “random.randint(1, 100)” .
+Na segunda função game(), criei 3 variáveis:
+- “resposta = gera()” -> esta variável chama a função anterior referida de forma a que esta gere um número aleatório para o computador pensar.
+-“tentativa = 0” -> esta variável será o número total de tentativas jogadas. 
+-“palpite = 0” -> esta será a resposta inserida pelo utilizador
+Comecei por criar um ciclo while que irá funcionar enquanto a resposta dada pelo utilizador for diferente da variável “resposta” que é o número a adivinhar. Dentro do ciclo, existe a soma de um à tentativa e a atualização do palpite com o novo número inserido pelo utilizador.
+Seguidamente, ainda dentro do ciclo, criei um ciclo de condição if elif else, onde se o palpite for maior que a resposta, será impresso que o valor é menor que o palpite. No elif, se o palpite for menor que a resposta, será impresso que o valor é maior que o palpite. Se não for nenhuma das opções anteriores, ou seja, se a resposta estiver certa, o computador irá imprimir qual o número gerado e o total de tentativas.
