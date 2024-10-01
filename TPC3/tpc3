@@ -1,0 +1,60 @@
+import random
+def modo1():
+    fosf = 21
+    while fosf > 0:
+        print("Existem neste momento", fosf, "fósforos.")
+        b = int(input("Introduza o número de fósforos que pretende retirar. Poderá ser de 1 a 4 fósforos incluído."))
+        while b > 4 or b < 1 or b > fosf:
+            b = int(input("Introduza o número de fósforos que pretende retirar. Poderá ser de 1 a 4 fósforos incluído."))
+        fosf = fosf - b
+        print("Retirou", b, "fósforo(s).")
+        c = 5 - b
+        print("O computador escolheu retirar", c, "fósforos.")
+        fosf = fosf - c
+        if fosf == 1:
+            print("Jogo terminado, como é o último a retirar acabou de perder a partida.")
+            fosf = 0
+    return 
+
+
+def modo2():
+    fosfe = 21
+    ver = False
+    while fosfe > 0:
+        print("Existem neste momento", fosfe, "fósferos.")
+        if ver == False:
+            b = random.randint(1,4)
+            while b > fosfe:
+                b = random.randint(1,4)
+        else:
+            b = 5 - c
+        fosfe = fosfe - b
+        print("O computador retirou", b, "fósforos. Restam", fosfe)
+ c = int(input("Introduza o número de fósforos que pretende retirar de 1 a 4."))
+        while c > 4 or c < 1 or c > fosfe:
+           c = int(input("Introduza o número de fósforos que pretende retirar de 1 a 4."))
+        print("Retirou", c, "fósforo(s).")
+        fosfe = fosfe - c
+        if c != 5 - b and ver == False:
+            ver = True
+            c = c + b
+        if fosfe == 1:
+            print("Jogo terminado, como é o último a retirar acabou de perder a partida.")
+            fosf = 0
+    return
+
+
+def jogo():
+    a = 3
+    while a not in [1,2,0]:
+        a = int(input("Escolha o modo de jogo, digitando 1 para jogar em primeiro lugar e 2 para jogar em segundo lugar. Digite 0 para sair"))
+    if a == 1:
+        modo1()
+        jogo()
+    elif a == 2:
+        modo2()
+        jogo()
+    else:
+        return
+
+jogo()
