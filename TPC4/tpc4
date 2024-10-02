@@ -1,0 +1,125 @@
+import random
+def crialista(N):
+    lista = []
+    while N > 0:
+        lista.append(random.randint(1,101))
+        N -= 1
+    return lista
+
+def lerlista():
+    a = int(input("Introduza o número de números que pretende que a lista tenha"))
+    b = 0
+    lista = []
+    while b < a:
+        c = int(input("Introduza um número para a lista:"))
+        lista.append(c)
+        b = b + 1
+    return lista
+
+def soma(lista):
+    soma = 0 
+    for elem in lista:
+        soma = soma + elem
+    return soma 
+
+def media(lista):
+    soma = 0
+    for elem in lista:
+        soma = soma + elem
+    media = soma / len(lista)
+    return media 
+
+def maiorelem(lista):
+    num = 0 
+    for elem in lista:
+        if elem > num:
+            num = elem
+    return num
+
+def menorelem(lista):
+    num = 10000
+    for elem in lista:
+        if elem < num:
+            num = elem
+    return num
+
+def estaorde(lista):
+    a = True
+    for i in range(0, len(lista) - 1):
+      if lista[i] > lista[i + 1]:
+        a = False
+    return a    
+        
+def estaorddec(lista):
+    a = True
+    for i in range(0, len(lista) - 1):
+        if lista[i] < lista[i + 1]:
+          a = False
+    return a 
+
+def procura(lista):
+    num = int(input("Introduza um número para procurar"))
+    i = 0
+    if num not in lista:
+        print("-1")
+    for elem in lista:
+        if elem == num:
+            print("O número encontra-se na posição", i,"da lista.")
+        i= i + 1
+    return 
+    
+print("""(1) Criar Lista 
+       (2) Ler Lista
+       (3) Soma
+       (4) Média
+       (5) Maior
+       (6) Menor
+       (7) estaOrdenada por ordem crescente
+       (8) estaOrdenada por ordem decrescente
+       (9) Procura um elemento
+       (0) Sair""")
+lista = [1,2,3]
+a = int(input("Introduza o número que pretende para aceder ao parametro desejado do menu"))
+while a != 0:
+    if a == 1:
+        N = 0
+        while N < 1:
+            N = int(input("Qual o tamanho da lista?"))    
+        lista = crialista(N)
+        print("Lista criada:", lista)
+    if a == 2:
+        lista = lerlista()
+        print(lista)
+    if a == 3:
+        som = soma(lista)
+        print(som)
+    if a == 4:
+        media=media(lista)
+        print(media)
+    if a == 5:
+        maior = maiorelem(lista)
+        print(maior)
+    if a == 6:
+        menor = menorelem(lista)
+        print(menor)
+    if a == 7:
+        ord= estaorde(lista)
+        print(ord)
+    if a == 8:
+        dec = estaorddec(lista) 
+        print(dec)  
+    if a == 9:
+        pr =procura(lista)
+        print(pr)
+    print("""(1) Criar Lista 
+       (2) Ler Lista
+       (3) Soma
+       (4) Média
+       (5) Maior
+       (6) Menor
+       (7) estaOrdenada por ordem crescente
+       (8) estaOrdenada por ordem decrescente
+       (9) Procura um elemento
+       (0) Sair""")
+    a = int(input("Introduza o número que pretende para aceder ao parametro desejado do menu"))
+print("Sessão terminada, a lista guardada é,", lista)  
