@@ -43,12 +43,12 @@ while op != 0:
     (5) sala do filme 
     (0) sair"""))
     if op == 1:
-        listar(cinema1) 
+        listar(cinema) 
     if op == 2:
-        disponivel(cinema1, filme, lugar)
+        disponivel(cinema, filme, lugar)
     if op == 3:
-        vendebilhete(cinema1, filme, lugar)
+        vendebilhete(cinema, filme, lugar)
     if op == 4:
-        listardisponibilidades(cinema1)
+        listardisponibilidades(cinema)
     if op == 5:
-        inserirSala(cinema1, sala1)
+        inserirSala(cinema, sala)
