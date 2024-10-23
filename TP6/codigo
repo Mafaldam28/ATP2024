@@ -1,0 +1,64 @@
+def criaTurma():
+    return []
+
+def inserealuno(aluno, turma):
+    if consulta(turma, aluno[1]):
+        turma.append(aluno)
+    return turma
+
+def listar(turma):
+    for elem in turma:
+        print("Nome:", elem[0], "id:", elem[1], "notas:", elem[2])
+    return
+
+def consulta(turma, id):
+    for elem in turma:
+        if elem[1] == id:
+            print(elem)
+    return
+
+def guarda(turma):
+    a = str(input("Introduza o nome do ficheiro que pretende guardar a turma"))
+    f = open(a, "w")
+    for elem in turma:
+        f.write(elem[0] + ";" + elem[1] + ";" + elem[2][0] + "," + elem[2][1] + "," + elem[2][2])
+    f.close()
+    return 
+
+def carrega():
+    turma = []
+    a = str(input("Introduza o nome do ficheiro que pretende guardar a turma"))
+    f = open(a)
+    for linha in f:
+        print(str(i) + " :: " + linha, end='')
+        i = i+1
+    f.close()
+    return
+
+turma = []
+a = 1
+      
+while a != 0:
+    print(""" - 1: Criar uma turma;
+      - 2: Inserir um aluno na turma;
+      - 3: Listar a turma;
+      - 4: Consultar um aluno por id;
+      - 8: Guardar a turma em ficheiro;
+      - 9: Carregar uma turma dum ficheiro;
+      - 0: Sair da aplicação""")
+    a = int(input("Introduza o número do menu pretendido"))
+    
+    if a == 1:
+        turma = criaTurma()
+    if a == 2:
+        al = ("Maria", 140, [10,12,15])
+        turma = inserealuno(al)
+    if a == 3:
+        listar(turma)
+    if a == 4:
+        id = int(input("Qual é o id?"))
+        consulta(turma, id)
+    if a == 8:
+        guarda(turma)
+    if a == 9:
+        carrega()
