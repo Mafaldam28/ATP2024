@@ -1,0 +1,97 @@
+
+def medias(tabMeteo):
+    res = []
+    for elem in tabMeteo:
+        soma = elem[1] + elem[2]
+        media = soma / 2
+        res.append((elem[0], media))
+    return res
+
+def guardaTabMeteo(t, fnome):
+    f = open(fnome, "w")
+    for dia in t:
+        f.write(str(dia[0][0]) + "," + str(dia[0][1]) + "," + str(dia[0][2]) + ";" + str(dia[1]) + ";" + str(dia[2]) + ";" + str(dia[3]) + "\n")
+    f.close()
+    return
+
+def carregaTabMeteo(fnome):
+    res = []
+    f = open(fnome)
+    for linha in f:
+        linha = linha[:-1]
+        data, tempmin, tempmax, prec = linha.split(";")
+        ano, mes, dia = data.split(",")
+        res.append(((int(ano), int(mes), int(dia)), int(tempmin), int(tempmax), float(prec)))
+    f.close()
+    return res
+
+def minMin(tabMeteo):
+    min = 1000
+    for elem in tabMeteo:
+        if elem[1] < min:
+            min = elem[1]
+    return min
+
+def amplTerm(tabMeteo):
+    res = []
+    for elem in tabMeteo:
+        amp = elem[2] - elem[1]
+        res.append((elem[0], amp))
+    return res 
+
+def maxChuva(tabMeteo):
+    max = 0
+    for elem in tabMeteo:
+        if elem[3] > max:
+            max = elem[3]
+
+    return (elem[0], max)
+
+def diasChuvosos(tabMeteo, p):
+    res = []
+    for elem in tabMeteo:
+        if elem[3] > p:
+            res.append((elem[0], elem[3]))
+    return res
+
+        
+a = 1
+while a > 0:
+    print(""" (1)Temperatura média de cada dia
+        (2)Guardar tabela metereológica no ficheiro
+        (3)Carregar tabela metereológica a partir de um ficheiro
+        (4)Temperatura mínima mais baixa da tabela metereológica
+        (5)Amplitude térmica de cada dia
+        (6)Data com maior precipitação
+        (7)Precipitação superior a p
+        (8)Número de dias consecutivos com precipitação inferior a p
+        (0)Sair""")
+    a = int(input("Introduza o número do indice ao qual pretende aceder"))
+    if a == 1:
+        b = medias(tabMeteo)
+        print(b)
+    
+    if a == 2:
+        b = guardaTabMeteo(t,fnome)
+        
+    if a == 3:
+        b = carregaTabMeteo(fnome)
+        print(b)
+    if a == 4:
+        b =minMin(tabMeteo)
+        print(b)
+    
+    if a == 5:
+        b = amplTerm(tabMeteo)
+        print(b)
+
+    if a == 6:
+        b = maxChuva(tabMeteo)
+        print(b)
+
+    if a == 7:
+        b = diasChuvoso(tabMeteo, p)
+        print(b)
+    
+    if a == 8:
+        b = maxPeriodoCalor(tabMeteo, p)
